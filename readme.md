@@ -3,6 +3,7 @@
 ## Project
 **Blogging Application - Backend**
 
+Run migrations with: "$ knex migrate:latest"
 ## Libraries/Frameworks
 - Express
 - Bcrypt

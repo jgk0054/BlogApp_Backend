@@ -11,7 +11,7 @@ module.exports = {
       user: 'postgres',
       host: 'localhost',
       database: 'blog_api',
-      password: 'yiff',
+      password: 'test_password',
     },
     migrations: {
       directory: './migrations'
