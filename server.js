@@ -3,8 +3,19 @@ dotenv.config();
 const cors = require('cors');
 const express = require('express');
 const app = express();
+
+
+// Configure CORS
+const corsOptions = {
+  origin: 'http://localhost:3001', // Allow requests from this origin
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Allow cookies to be sent
+  optionsSuccessStatus: 204 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+
 // Use the cors middleware
-app.use(cors());
+app.use(cors(corsOptions));
 
 const userRoutes = require('./routes/authRoutes');
 const blogRoutes = require('./routes/blogRoutes');

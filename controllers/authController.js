@@ -4,6 +4,7 @@ const User = require('../models/userModel');
 
 // Function for handling user login
 exports.login = async (req, res) => {
+    console.info('Login request received.');
     try {
         const { username, password } = req.body;
 
@@ -17,13 +18,13 @@ exports.login = async (req, res) => {
         if (!user) {
             return res.status(400).send('Invalid username or password.');
         }
-
+        console.info(password, user.password);
         // Validate password using bcrypt
         const validPassword = await bcrypt.compare(password, user.password);
         if (!validPassword) {
             return res.status(400).send('Invalid username or password.');
         }
-
+        console.info("got here")
         // Generate JWT token for authenticated user
         const token = jwt.sign({ _id: user.id }, process.env.JWT_SECRET);
         const { id, author_name, author_url, avatar_url, role } = user;
