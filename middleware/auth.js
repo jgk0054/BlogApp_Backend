@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
 
   try {
     // Verify the token
-    const payload = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
     // Get the user from the database
     const user = await User.findById(payload._id);
     if (!user) {

@@ -13,12 +13,15 @@ exports.getBlog = async (req, res) => {
 };
 
 exports.createBlog = async (req, res) => {
-  const { title, content } = req.body;
+  const { title, blocks } = req.body;
+  console.info(req.body)
+  console.info("Got here")
+  console.info(title, blocks)
   const userId = req.user.id;
   if(!userId){
     return res.status(404).send('Null userID')
   }
-  const newBlog = await Blog.createBlog(title, content, userId);
+  const newBlog = await Blog.createBlog(title, blocks, userId);
   res.status(201).json(newBlog);
 };
 
